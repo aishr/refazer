@@ -153,6 +153,9 @@
     <Compile Include="Refazer.cs" />
     <Compile Include="Refazer4JS.cs" />
     <Compile Include="Refazer4Python.cs" />
+    <Compile Include="spacer-ast\InternalNode.cs" />
+    <Compile Include="spacer-ast\LeafNode.cs" />
+    <Compile Include="spacer-ast\SpacerNode.cs" />
     <Compile Include="synthesis\AbsolutePath.cs" />
     <Compile Include="synthesis\InvalidTemplate.cs" />
     <Compile Include="synthesis\MagicK.cs" />

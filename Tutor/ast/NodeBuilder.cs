@@ -18,10 +18,12 @@ namespace Tutor
             {
                 case "NameExpressionNode":
                     return new NameExpression(info.NodeValue);
+                /*
                 case "ConstantExpressionNode": 
                     return new ConstantExpression(info.NodeValue);
                 case "ParameterNode":
                     return new Parameter(info.NodeValue);
+                    */
                 default:
                     throw new NotImplementedException(info.NodeType);
             }
@@ -33,6 +35,14 @@ namespace Tutor
             var rewriter = new Rewriter(new List<Edit>());
             switch (info.NodeType)
             {
+                case "SuiteStatementNode":
+                    var statements = Children.Select(e => rewriter.VisitStatement((Statement)e.InnerNode));
+                    var suiteStatement = new SuiteStatement(statements.ToArray());
+                    return new SuiteStatementNode(suiteStatement) {Children = Children};
+                case "ExpressionStatementNode":
+                    var expressionStatement = new ExpressionStatement(rewriter.VisitExpression((Expression)Children[0].InnerNode));
+                    return new ExpressionStatementNode(expressionStatement) {Children = Children};
+                /*
                 case "CallExpressionNode":
                     var target = (Expression)Children[0].InnerNode;
                     var args = new List<Arg>();
@@ -62,10 +72,6 @@ namespace Tutor
                     PythonOperator op1 = info.NodeValue;
                     var augmentedAssignStatement = new AugmentedAssignStatement(op1, rewriter.VisitExpression(left1), rewriter.VisitExpression(right1));
                     return new AugmentedAssignStatementNode(augmentedAssignStatement) {Children = Children, Value = augmentedAssignStatement.Operator };
-                case "SuiteStatementNode":
-                    var statements = Children.Select(e => rewriter.VisitStatement((Statement)e.InnerNode));
-                    var suiteStatement = new SuiteStatement(statements.ToArray());
-                    return new SuiteStatementNode(suiteStatement) {Children = Children};
                 case "WhileStatementNode":
                     var test = (Expression) Children[0].InnerNode;
                     var body = (Statement) Children[1].InnerNode;
@@ -79,9 +85,6 @@ namespace Tutor
                     var parameter = new Parameter(info.NodeValue);
                     if (Children.Any()) parameter.DefaultValue = rewriter.VisitExpression((Expression)Children[0].InnerNode);
                     return new ParameterNode(parameter) {Children = Children, Value = parameter.Name};
-                case "ExpressionStatementNode":
-                    var expressionStatement = new ExpressionStatement(rewriter.VisitExpression((Expression)Children[0].InnerNode));
-                    return new ExpressionStatementNode(expressionStatement) {Children = Children};
                 case "ParenthesisExpressionNode":
                     var parenthesisExpression = new ParenthesisExpression(rewriter.VisitExpression((Expression)Children[0].InnerNode));
                     return new ParenthesisExpressionNode(parenthesisExpression) {Children = Children};  
@@ -113,6 +116,7 @@ namespace Tutor
                 //case "FunctionDefinitionNode":
                 //    var funDef = new FunctionDefinition(info.NodeValue, ,rewriter.VisitExpression((Expression)Children[0].InnerNode));
                 //    return new FunctionDefinitionNode(funDef) { Children = Children };
+                */
                 default:
                     throw new NotImplementedException(info.NodeType);
             }

@@ -38,7 +38,7 @@ namespace Refazer.Core
         /// </summary>  
         public Result<Grammar> Grammar { get; }
 
-        public Refazer4Python(string pathToGrammar = @"..\..\..\Tutor\synthesis\", string pathToDslLib = @"..\..\..\Tutor\bin\debug")
+        public Refazer4Python(string pathToGrammar = @"../../../Tutor/synthesis/", string pathToDslLib = @"../../../Tutor/bin/debug")
         {
             _pathToGrammar = pathToGrammar;
             _pathToDslLib = pathToDslLib;
@@ -104,7 +104,8 @@ namespace Refazer.Core
 
         public State CreateInputState(string program)
         {
-            var astBefore = NodeWrapper.Wrap(ASTHelper.ParseContent(program));
+            var content = ASTHelper.ParseContent(program);
+            var astBefore = NodeWrapper.Wrap(content);
             var input = State.CreateForExecution(Grammar.Value.InputSymbol, astBefore);
             return input;
         }

@@ -42,31 +42,9 @@ namespace Tutor
         {
             if (stmt is PythonAstNode) Write(stmt as PythonAstNode);
             else if (stmt is SuiteStatementNode) Write(stmt as SuiteStatementNode);
-            else if (stmt is FunctionDefinitionNode) Write(stmt as FunctionDefinitionNode);
-            else if (stmt is ReturnStatementNode) Write(stmt as ReturnStatementNode, notlambda);
-            else if (stmt is IfStatementNode) Write(stmt as IfStatementNode);
-            else if (stmt is AssignmentStatementNode) Write(stmt as AssignmentStatementNode);
-            else if (stmt is AugmentedAssignStatementNode) Write(stmt as AugmentedAssignStatementNode);
-            else if (stmt is ForStatementNode) Write(stmt as ForStatementNode);
-            else if (stmt is WhileStatementNode) Write(stmt as WhileStatementNode);
             else if (stmt is ExpressionStatementNode) Write(stmt as ExpressionStatementNode, notlambda);
-            else if (stmt is ImportStatementNode) Write(stmt as ImportStatementNode);
             else if (stmt is NameExpressionNode) Write(stmt as NameExpressionNode);
-            else if (stmt is BinaryExpressionNode) Write(stmt as BinaryExpressionNode);
-            else if (stmt is ConstantExpressionNode) Write(stmt as ConstantExpressionNode);
-            else if (stmt is CallExpressionNode) Write(stmt as CallExpressionNode);
-            else if (stmt is ArgNode) Write((ArgNode)stmt);
-            else if (stmt is TupleExpressionNode) Write(stmt as TupleExpressionNode);
-            else if (stmt is ParenthesisExpressionNode) Write((ParenthesisExpressionNode)stmt);
-            else if (stmt is MemberExpressionNode) Write((MemberExpressionNode)stmt);
-            else if (stmt is LambdaExpressionNode) Write((LambdaExpressionNode)stmt);
-            else if (stmt is IndexExpressionNode) Write((IndexExpressionNode)stmt);
-            else if (stmt is ListExpressionNode) Write((ListExpressionNode)stmt);
             else if (stmt is OrExpressionNode) Write((OrExpressionNode)stmt);
-            else if (stmt is UnaryExpressionNode) Write((UnaryExpressionNode)stmt);
-            else if (stmt is ParameterNode) Write((ParameterNode)stmt);
-            else if (stmt is PrintStatementNode) Write((PrintStatementNode)stmt);
-            else if (stmt is FromImportStatementNode) Write((FromImportStatementNode)stmt);
             else
                 throw new NotImplementedException(stmt.GetType().ToString());
         }
@@ -75,8 +53,41 @@ namespace Tutor
         {
             stmt.Children.ForEach(e => Write(e));
         }
+        private void Write(SuiteStatementNode stmt)
+        {
+            foreach (var statement in stmt.Children)
+            {
+                Write(statement);
+            }
+        }
+        private void Write(ExpressionStatementNode stmt, bool notlambda = true)
+        {
+            if (string.IsNullOrEmpty(stmt.Documentation))
+            {
+                if (notlambda) Fill();
+                Write(stmt.Children[0]);
+            }
+        }
+        private void Fill()
+        {
+            _code.Append(_newLine);
+            for (var i = 0; i < _indent; i++)
+            {
+                _code.Append(Indentation);
+            }
+        }
+        private void Write(NameExpressionNode exp)
+        {
+            _code.Append(exp.Value);
+        }
+        private void Write(OrExpressionNode exp)
+        {
+            Write(exp.Children[0]);
+            _code.Append(" or ");
+            Write(exp.Children[1]);
+        }
 
-
+/*
         private void Write(FromImportStatementNode stmt)
         {
 
@@ -123,14 +134,6 @@ namespace Tutor
             }
         }
 
-        private void Write(ExpressionStatementNode stmt, bool notlambda = true)
-        {
-            if (string.IsNullOrEmpty(stmt.Documentation))
-            {
-                if (notlambda) Fill();
-                Write(stmt.Children[0]);
-            }
-        }
 
         private void Write(PrintStatementNode stmt, bool notlambda = true)
         {
@@ -265,13 +268,6 @@ namespace Tutor
             Write(stmt.Children.Last());
         }
 
-        private void Write(SuiteStatementNode stmt)
-        {
-            foreach (var statement in stmt.Children)
-            {
-                Write(statement);
-            }
-        }
 
         private void Write(FunctionDefinitionNode stmt)
         {
@@ -337,12 +333,6 @@ namespace Tutor
             Write(exp.Children[0]);
         }
 
-        private void Write(OrExpressionNode exp)
-        {
-            Write(exp.Children[0]);
-            _code.Append(" or ");
-            Write(exp.Children[1]);
-        }
 
         private void Write(ListExpressionNode exp)
         {
@@ -388,10 +378,6 @@ namespace Tutor
             }
         }
 
-        private void Write(NameExpressionNode exp)
-        {
-            _code.Append(exp.Value);
-        }
         private void Write(BinaryExpressionNode exp)
         {
             Write(exp.Children[0]);
@@ -473,14 +459,7 @@ namespace Tutor
         }
 
 
-        private void Fill()
-        {
-            _code.Append(_newLine);
-            for (var i = 0; i < _indent; i++)
-            {
-                _code.Append(Indentation);
-            }
-        }
+        */
     }
 
 }

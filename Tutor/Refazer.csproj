@@ -132,7 +132,6 @@
     <Compile Include="ast\ListExpressionNode.cs" />
     <Compile Include="ast\MatchNode.cs" />
     <Compile Include="ast\MemberExpressionNode.cs" />
-    <Compile Include="ast\MyAst.cs" />
     <Compile Include="ast\NameExpressionNode.cs" />
     <Compile Include="ast\NodeBuilder.cs" />
     <Compile Include="ast\OrExpressionNode.cs" />

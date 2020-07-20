@@ -27,7 +27,7 @@ namespace Tutor
         public PythonNode(Node innerNode)
         {
             Id = IdCount++;
-            InnerNode = null;
+            InnerNode = innerNode;
             Children = new List<PythonNode>();
             Reference = false;
         }

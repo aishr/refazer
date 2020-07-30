@@ -3,6 +3,7 @@ using System.Linq;
 using CsQuery.ExtensionMethods.Internal;
 using IronPython.Compiler.Ast;
 
+/*
 namespace Tutor.ast
 {
     public class FromImportStatementNode : InternalNode
@@ -37,3 +38,4 @@ namespace Tutor.ast
         }
     }
 }
+*/

@@ -121,6 +121,7 @@
     <Compile Include="ast\IfStatementTestNode.cs" />
     <Compile Include="ast\ImportStatementNode.cs" />
     <Compile Include="ast\IndexExpressionNode.cs" />
+    <Compile Include="ast\InnerNode.cs" />
     <Compile Include="ast\InsertFixedList.cs" />
     <Compile Include="ast\InsertNodeInDynamicList.cs" />
     <Compile Include="ast\InsertStrategy.cs" />

@@ -13,6 +13,8 @@ using Microsoft.ProgramSynthesis.Specifications;
 using Tutor;
 using Tutor.Transformation;
 using System.Diagnostics;
+using IronPython.Compiler.Ast;
+using Tutor.ast;
 
 namespace Refazer.Core
 {

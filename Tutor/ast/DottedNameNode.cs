@@ -2,6 +2,7 @@
 using CsQuery.ExtensionMethods.Internal;
 using IronPython.Compiler.Ast;
 
+/*
 namespace Tutor.ast
 {
     public class DottedNameNode : LeafNode
@@ -34,3 +35,4 @@ namespace Tutor.ast
         }
     }
 }
+*/

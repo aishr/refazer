@@ -1,20 +1,20 @@
-﻿using IronPython.Compiler.Ast;
+﻿/*
+using IronPython.Compiler.Ast;
 
 namespace Tutor.ast
 {
     class ArgNode : InternalNode
     {
-        public ArgNode(Node innerNode) : base(innerNode)
+        public ArgNode(InnerNode innerNode) : base(innerNode)
         {
             InsertStrategy = new InsertFixedList();
         }
 
-        
-        protected override bool IsEqualToInnerNode(Node node)
+        protected override bool IsEqualToInnerNode(InnerNode node)
         {
-            var comparedNode = node as Arg;
+            var comparedNode = node;
             if (comparedNode == null) return false;
-            var inner = (Arg)InnerNode;
+            var inner = InnerNode;
 
             if (inner.Name == null && comparedNode.Name == null)
                 return true;
@@ -24,7 +24,6 @@ namespace Tutor.ast
                 return false;
             return comparedNode.Name.Equals(inner.Name);
         }
-
         public override PythonNode Clone()
         {
             var pythonNode = new ArgNode(InnerNode);
@@ -35,3 +34,4 @@ namespace Tutor.ast
         }
     }
 }
+*/

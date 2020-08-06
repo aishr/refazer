@@ -9,7 +9,7 @@ namespace Tutor.ast
 {
     public abstract class LeafNode : PythonNode
     {
-        public LeafNode(Node innerNode) : base(innerNode)
+        public LeafNode(InnerNode innerNode) : base(innerNode)
         {
         }
 

@@ -11,15 +11,15 @@ namespace Tutor.ast
     {
         public string Documentation { set; get; }
 
-        public ExpressionStatementNode(Node innerNode) : base(innerNode)
+        public ExpressionStatementNode(InnerNode innerNode) : base(innerNode)
         {
             InsertStrategy = new InsertFixedList();
         }
 
-        protected override bool IsEqualToInnerNode(Node node)
+        protected override bool IsEqualToInnerNode(InnerNode node)
         {
-            var comparedNode = node as ExpressionStatement;
-            if (comparedNode == null) return false;
+            //var comparedNode = node as ExpressionStatement;
+            //if (comparedNode == null) return false;
             return true;
         }
 

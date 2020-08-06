@@ -9,16 +9,16 @@ namespace Tutor.ast
 {
     class SuiteStatementNode : InternalNode
     {
-        public SuiteStatementNode(Node innerNode) : base(innerNode)
+        public SuiteStatementNode(InnerNode innerNode) : base(innerNode)
         {
             InsertStrategy = new InsertNodeInDynamicList();
         }
 
-
-        protected override bool IsEqualToInnerNode(Node node)
+        
+        protected override bool IsEqualToInnerNode(InnerNode node)
         {
-            var comparedNode = node as SuiteStatement;
-            if (comparedNode == null) return false;
+            //var comparedNode = node as SuiteStatement;
+            //if (comparedNode == null) return false;
             return true;
         }
 

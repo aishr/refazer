@@ -9,16 +9,17 @@ namespace Tutor.ast
 {
     class NameExpressionNode : LeafNode
     {
-        public NameExpressionNode(Node innerNode) : base(innerNode)
+        public NameExpressionNode(InnerNode innerNode) : base(innerNode)
         {
         }
 
-        protected override bool IsEqualToInnerNode(Node node)
+        protected override bool IsEqualToInnerNode(InnerNode node)
         {
-            var inner = InnerNode as NameExpression;
-            var comparedNode = node as NameExpression;
-            if (comparedNode == null) return false;
-            return inner.Name.Equals(comparedNode.Name);
+            //var inner = InnerNode as NameExpression;
+            //var comparedNode = node as NameExpression;
+            //if (comparedNode == null) return false;
+            //return inner.Name.Equals(comparedNode.Name);
+            return true;
         }
 
         public override PythonNode Clone()

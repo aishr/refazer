@@ -19,12 +19,12 @@ namespace Tutor
 
         public dynamic Value { get; set; }
 
-        public Node InnerNode { get;}
+        public InnerNode InnerNode { get;}
         public List<PythonNode> Children { get; set; }
         public PythonNode Parent { get; set; }
         public bool Reference { get; set; }
 
-        public PythonNode(Node innerNode)
+        public PythonNode(InnerNode innerNode)
         {
             Id = IdCount++;
             InnerNode = innerNode;
@@ -57,14 +57,14 @@ namespace Tutor
         public abstract Tuple<bool, PythonNode> Match(PythonNode node);
 
 
-        protected bool MatchInternalNode(Node node)
+        protected bool MatchInternalNode(InnerNode node)
         {
             if (!IsEqualToInnerNode(node))
                 return false;
             return true;
         }
 
-        protected abstract bool IsEqualToInnerNode(Node node);
+        protected abstract bool IsEqualToInnerNode(InnerNode node);
 
         protected PythonNode AddBindingNode(PythonNode current, PythonNode matchresult)
         {

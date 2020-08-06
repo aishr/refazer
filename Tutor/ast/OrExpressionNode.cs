@@ -9,13 +9,13 @@ namespace Tutor.ast
 {
     class OrExpressionNode : InternalNode
     {
-        public OrExpressionNode(Node innerNode) : base(innerNode)
+        public OrExpressionNode(InnerNode innerNode) : base(innerNode)
         {
             InsertStrategy = new InsertFixedList();
         }
 
     
-        protected override bool IsEqualToInnerNode(Node node)
+        protected override bool IsEqualToInnerNode(InnerNode node)
         {
             throw new NotImplementedException();
         }

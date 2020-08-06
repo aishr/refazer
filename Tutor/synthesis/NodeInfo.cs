@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IronPython.Compiler.Ast;
+using Tutor.ast;
 
 namespace Tutor
 {
@@ -56,25 +57,25 @@ namespace Tutor
             switch (type)
             {
                 case "FunctionDefinitionNode":
-                    nodeValue = ((FunctionDefinition)node.InnerNode).Name;
+                    nodeValue = (node.InnerNode).Name;
                     break;
                 case "ConstantExpressionNode":
-                    nodeValue = ((ConstantExpression) node.InnerNode).Value;
+                    nodeValue = (node.InnerNode).Value;
                     break;
                 case "AugmentedAssignStatementNode":
-                    nodeValue = ((AugmentedAssignStatement)node.InnerNode).Operator;
+                    nodeValue = (node.InnerNode).Operator;
                     break;
                 case "BinaryExpressionNode":
-                    nodeValue = ((BinaryExpression) node.InnerNode).Operator;
+                    nodeValue = (node.InnerNode).Operator;
                     break;
                 case "NameExpressionNode":
-                    nodeValue = ((NameExpression) node.InnerNode).Name;
+                    nodeValue = (node.InnerNode).Name;
                     break;
                 case "TupleExpressionNode":
-                    nodeValue = ((TupleExpression) node.InnerNode).IsExpandable;
+                    nodeValue = (node.InnerNode).IsExpandable;
                     break;
                 case "ParameterNode":
-                    nodeValue = ((Parameter)node.InnerNode).Name;
+                    nodeValue = (node.InnerNode).Name;
                     break;
                 case "ArgNode":
                 case "CallExpressionNode":

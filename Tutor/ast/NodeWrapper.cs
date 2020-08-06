@@ -63,7 +63,7 @@ namespace Tutor
             result.AddChild(Wrap(stmt.Expression, result));
             return result;
         }
-        private static PythonNode Wrap(SuiteStatement stmt, PythonNode parent)
+        private static PythonNode Wrap(InnerNode stmt, PythonNode parent)
         {
             var result = new SuiteStatementNode(stmt) { Parent = parent };
             foreach (var statement in stmt.Statements)

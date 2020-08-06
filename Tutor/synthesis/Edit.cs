@@ -147,9 +147,9 @@ namespace Tutor
         public override string ToString()
         {
             var value = "?";
-            var inner = ModifiedNode.InnerNode as IronPython.Compiler.Ast.ConstantExpression;
-            if (inner != null)
-                value = inner.Value.ToString();
+            //var inner = ModifiedNode.InnerNode as IronPython.Compiler.Ast.ConstantExpression;
+            //if (inner != null)
+            //    value = inner.Value.ToString();
 
             return "Rewrite: " + TargetNode.InnerNode.NodeName + " to: " + ModifiedNode.InnerNode.NodeName + "-" + value;
         }

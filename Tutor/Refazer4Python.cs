@@ -14,6 +14,8 @@ using Tutor;
 using Tutor.Transformation;
 using System.Diagnostics;
 using IronPython.Compiler.Ast;
+using IronPython.Modules;
+using IronPython.Runtime;
 using Tutor.ast;
 
 namespace Refazer.Core
@@ -106,6 +108,23 @@ namespace Refazer.Core
 
         public State CreateInputState(string program)
         {
+            var result = new PythonAstNode(
+                    new SuiteStatement(
+                        new Statement[1] {
+                            new ExpressionStatement(
+                                new OrExpression(
+                                    new NameExpression("a"), 
+                                    new ParenthesisExpression(
+                                        new OrExpression(
+                                            new NameExpression("a"), 
+                                            new NameExpression("b")
+                                            )
+                                        )
+                                    )
+                                )
+                        }
+                        ), false, ModuleOptions.Initialize, false
+                );
             var content = ASTHelper.ParseContent(program);
             var astBefore = NodeWrapper.Wrap(content);
             var input = State.CreateForExecution(Grammar.Value.InputSymbol, astBefore);

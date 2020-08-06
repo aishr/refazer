@@ -34,7 +34,7 @@ namespace Tutor.ast
             return Tuple.Create(true, binding);
         }
 
-        public InternalNode(Node innerNode) : base(innerNode)
+        public InternalNode(InnerNode innerNode) : base(innerNode)
         {
         }
     }

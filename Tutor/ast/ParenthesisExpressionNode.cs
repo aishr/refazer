@@ -9,15 +9,15 @@ namespace Tutor.ast
 {
     class ParenthesisExpressionNode : InternalNode
     {
-        public ParenthesisExpressionNode(Node innerNode) : base(innerNode)
+        public ParenthesisExpressionNode(InnerNode innerNode) : base(innerNode)
         {
             InsertStrategy = new InsertFixedList();
         }
 
-        protected override bool IsEqualToInnerNode(Node node)
+        protected override bool IsEqualToInnerNode(InnerNode node)
         {
-            var comparedNode = node as ParenthesisExpression;
-            if (comparedNode == null) return false;
+            //var comparedNode = node as ParenthesisExpression;
+            //if (comparedNode == null) return false;
             return true;
         }
 
